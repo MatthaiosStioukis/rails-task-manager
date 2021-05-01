@@ -1,4 +1,18 @@
 class TasksController < ApplicationController
-  Task.create title: 'Laundry', details: 'Do not mix colors!'
-  Task.create title: 'Studying', details: 'A lot of flashcards to do', completed: true
+  def index
+    @tasks = Task.all
+  end
+
+  def new
+    @task = Task.new
+  end
+
+  def create
+    @task = Task.new(params[:task])
+    @task.save
+  end
+
+  def show
+    @task = Task.find(params[:id])
+  end
 end
